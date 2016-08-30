@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import SampleClassComponent from './components/SampleClassComponent';
 import logo from './logo.svg';
+
 import './App.css';
 
 // TODO: In order to use React-redux, use Provider, and createStore

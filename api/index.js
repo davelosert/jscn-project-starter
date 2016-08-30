@@ -15,7 +15,7 @@ server.use((err, req, res, next) => {
     });
 });
 
-server.listen(3000, () => {
+server.listen(3001, () => {
   console.log('JSON Server is running: 3000');
 });
 
