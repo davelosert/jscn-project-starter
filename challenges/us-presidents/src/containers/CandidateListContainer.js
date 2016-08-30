@@ -20,10 +20,22 @@ class CandidateListContainer extends Component {
     }
 
     componentDidMount() {
-        request('http://localhost:3001/api/us-presidents/candidates', (err, response, body) => {
+        request('http://localhost:3001/api/us-presidents/summary', (err, response, body) => {
             console.log(`${body}`);
+            let bodyMovin = JSON.parse(body);
+
+            let allVotes = bodyMovin.allVotes;
+            let allCandidates = bodyMovin.candidates;
+
+            let cumulatedCandidates = allCandidates.map((candidate) => {
+                let votesForCandidate = allVotes.filter((vote) => vote.candidateId === candidate.id).length
+                return Object.assign({}, candidate, {
+                    numVotes: votesForCandidate
+                });
+            });
+
             this.setState({
-                candidates: JSON.parse(body)
+                candidates: cumulatedCandidates
             });
         });
     }
@@ -34,7 +46,7 @@ class CandidateListContainer extends Component {
 
     render() {
         let candidateList = this.state.candidates.map((candidate) => {
-            return (<CandidateComponent candidate={candidate} numVotes={0} />)
+            return (<CandidateComponent candidate={candidate}/>)
         });
         return (
             <div>

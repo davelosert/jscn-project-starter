@@ -28,14 +28,12 @@ class CandidateComponent extends Component {
     /* Rendering */
 
     render() {
-        console.log(this.state);
-
-        const {candidate, numVotes} = this.props;
+        const {candidate} = this.props;
 
         return (
             <li>
                 <img src={candidate.photoUrl} alt=""/>
-                <b>Votes:</b><i>{numVotes}</i><br />
+                <b>Votes:</b><i>{candidate.numVotes}</i><br />
                 {candidate.name}
             </li>
         );
