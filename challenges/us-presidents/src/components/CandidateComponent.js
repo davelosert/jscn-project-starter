@@ -22,7 +22,7 @@ class CandidateComponent extends Component {
     /* Click handlers and custom methods */
 
     vote() {
-        this.setState({numVotes: this.state.numVotes + 1});
+        this.props.vote(this.props.candidate);
     }
 
     /* Rendering */
@@ -32,7 +32,7 @@ class CandidateComponent extends Component {
 
         return (
             <li>
-                <img src={candidate.photoUrl} alt=""/>
+                <img src={candidate.photoUrl} alt="" onClick={this.vote}/>
                 <b>Votes:</b><i>{candidate.numVotes}</i><br />
                 {candidate.name}
             </li>

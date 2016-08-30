@@ -17,6 +17,8 @@ class CandidateListContainer extends Component {
         this.state = {
             candidates: []
         };
+
+        this.vote = this.vote.bind(this);
     }
 
     componentDidMount() {
@@ -40,13 +42,22 @@ class CandidateListContainer extends Component {
         });
     }
 
-    vote() {
+    vote(candidate) {
+        if (candidate.id === 2) {
+            alert("No no, Bad user!");
+        }
+        request({
+            method: 'POST',
+            url: 'http://localhost:3001/api/us-presidents/votes',
+            json: {candidateId: candidate.id}
+        }, () => {
 
+        });
     }
 
     render() {
         let candidateList = this.state.candidates.map((candidate) => {
-            return (<CandidateComponent candidate={candidate}/>)
+            return (<CandidateComponent candidate={candidate} vote={this.vote}/>)
         });
         return (
             <div>
