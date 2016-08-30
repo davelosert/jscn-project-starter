@@ -6,7 +6,7 @@
 
 import React, {Component} from 'react';
 import request from 'browser-request';
-import CandidateComponent from '../components/candidateComponent';
+import CandidateComponent from '../components/CandidateComponent';
 
 import './styles.css';
 
