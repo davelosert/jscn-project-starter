@@ -6,6 +6,10 @@
 
 import React, {Component} from 'react';
 import request from 'browser-request';
+import CandidateComponent from '../components/candidateComponent';
+
+import './styles.css';
+
 
 class CandidateListContainer extends Component {
     constructor(props) {
@@ -24,17 +28,18 @@ class CandidateListContainer extends Component {
         });
     }
 
+    vote() {
+
+    }
+
     render() {
         let candidateList = this.state.candidates.map((candidate) => {
-            return (<li>
-                <img src={candidate.photoUrl} alt=""/>
-                {candidate.name}
-            </li>)
+            return (<CandidateComponent candidate={candidate} numVotes={0} />)
         });
         return (
             <div>
                 <h1>Candidates List</h1>
-                <ul>
+                <ul className="candidate-component-list">
                     {candidateList}
                 </ul>
             </div>
